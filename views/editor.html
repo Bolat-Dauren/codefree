@@ -1,0 +1,25 @@
+<!-- codefree/views/editor.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Include the Ace code editor library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+</head>
+<body>
+<div class="top-links">
+    <a href="/education">Education</a> | <a href="/about">About</a>
+</div>
+<h1>Code Editor</h1>
+<div id="editor" style="height: 400px;"></div>
+<button onclick="runCode()">Run Code</button>
+<pre id="output"></pre>
+<script src="/js/main.js"></script>
+
+<a href="/">Back to Home</a>
+</body>
+</html>
