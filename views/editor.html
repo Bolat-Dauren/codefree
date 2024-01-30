@@ -7,19 +7,39 @@
     <title>Code Editor</title>
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- Include the Ace code editor library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <!-- включаем библиотеку редактора кода Ace -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.js"></script>
 </head>
 <body>
-<div class="top-links">
-    <a href="/education">Education</a> | <a href="/about">About</a>
-</div>
+<!-- включаем общую панель навигации -->
+<div id="navbar-container"></div>
+
 <h1>Code Editor</h1>
-<div id="editor" style="height: 400px;"></div>
+<div id="editor" style="height: 400px; width: 80vw;"></div>
 <button onclick="runCode()">Run Code</button>
 <pre id="output"></pre>
+<button onclick="goBack()">Back</button>
 <script src="/js/main.js"></script>
 
-<a href="/">Back to Home</a>
+<!-- скрипт для обработки кнопки "назад" -->
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<!-- скрипт для инициализации редактора кода Ace -->
+<script>
+    // ожидаем готовности DOM
+    document.addEventListener("DOMContentLoaded", function () {
+        // инициализируем редактор Ace
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/java");
+    });
+
+    // общий скрипт панели навигации
+    document.getElementById('navbar-container').innerHTML = '<object type="text/html" data="/views/navbar.html"></object>';
+</script>
 </body>
 </html>

@@ -4,37 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeFree - Java Learning</title>
+    <title>CodeFree - Education</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>Learn Java Programming</h1>
 
-<h2>Introduction to Java</h2>
-<p>
-    Java is a high-level, object-oriented programming language developed by Sun Microsystems.
-    It is known for its portability, security features, and ease of use.
-</p>
+<div id="navbar-container"></div>
 
-<h2>Getting Started</h2>
-<p>
-    To start programming in Java, you need to have the Java Development Kit (JDK) installed on your machine.
-    You can download it from the official Oracle website.
-</p>
+<h1>Learn Programming</h1>
 
-<h2>Hello World in Java</h2>
-<pre>
-        <code class="java">
-            public class HelloWorld {
-                public static void main(String[] args) {
-                    System.out.println("Hello, World!");
-                }
-            }
-        </code>
-    </pre>
+<div class="courses-container">
+    <div class="course" id="java-course">
+        <h2>Learn Java</h2>
+        <p>Get hands-on experience in Java programming with this interactive and practical course.</p>
+        <button onclick="viewCourse('java')">View this Course</button>
+    </div>
 
-<!-- Add more educational content as needed -->
+    <div class="course" id="cpp-course">
+        <h2>Learn C++</h2>
+        <p>Join this interactive and hands-on C++ course to master the basic syntax of the language.</p>
+        <button onclick="viewCourse('cpp')">View this Course</button>
+    </div>
 
-<a href="/">Back to Home</a>
+    <div class="course" id="javascript-course">
+        <h2>Learn JavaScript</h2>
+        <p>Explore the world of web development with our JavaScript course covering the basics and beyond.</p>
+        <button onclick="viewCourse('javascript')">View this Course</button>
+    </div>
+</div>
+
+<!-- Script for handling the "Back" button -->
+<button onclick="goBack()">Back</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    function viewCourse(course) {
+        // You can add logic here to navigate to the specific course page
+        alert("Viewing " + course + " course");
+    }
+</script>
+
+<!-- Common script for navigation bar -->
+<script>
+    document.getElementById('navbar-container').innerHTML = '<object type="text/html" data="/views/navbar.html"></object>';
+</script>
 </body>
 </html>
