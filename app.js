@@ -26,6 +26,8 @@ const User = mongoose.model('User', userSchema);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+
+
 // Routes
 
 // Registration route
@@ -106,3 +108,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+// Test coom Nurik hhhjhhj
