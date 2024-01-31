@@ -16,6 +16,13 @@
 
 <h1>Code Editor</h1>
 <div id="editor" style="height: 400px; width: 80vw;"></div>
+<!-- Добавляем выпадающий список для выбора языка программирования -->
+<select id="language-select" onchange="changeLanguage()">
+    <option value="java">Java</option>
+    <option value="cpp">C++</option>
+    <option value="javascript">JavaScript</option>
+    <!-- Добавьте другие языки программирования по мере необходимости -->
+</select>
 <button onclick="runCode()">Run Code</button>
 <pre id="output"></pre>
 <button onclick="goBack()">Back</button>
@@ -26,6 +33,25 @@
     function goBack() {
         window.history.back();
     }
+
+
+    function changeLanguage() {
+        // Получаем выбранный язык программирования из выпадающего списка
+        var selectedLanguage = document.getElementById("language-select").value;
+
+        // Устанавливаем соответствующий режим редактора Ace
+        if (selectedLanguage === "java") {
+            editor.session.setMode("ace/mode/java");
+        } else if (selectedLanguage === "cpp") {
+            editor.session.setMode("ace/mode/c_cpp");
+        } else if (selectedLanguage === "javascript") {
+            editor.session.setMode("ace/mode/javascript");
+        }
+        // Добавьте другие языки программирования и их соответствующие режимы редактора Ace по мере необходимости
+    }
+
+
+
 </script>
 
 <!-- скрипт для инициализации редактора кода Ace -->

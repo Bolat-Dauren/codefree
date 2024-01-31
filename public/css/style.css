@@ -87,23 +87,20 @@ button:hover, a:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+    margin-bottom: 50px; /* Добавленный отступ между футером и кнопкой */
 }
 
 .website, .follow-us {
     color: #fff;
     font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 10px;
+    margin-bottom: 50px;
 }
 
 .icon {
     width: 30px;
     height: 30px;
     background-size: cover;
+    margin-right: 20px; /* Отступ между иконками */
 }
 
 .youtube { background-image: url('youtube-icon.png'); }
@@ -111,3 +108,38 @@ button:hover, a:hover {
 .x { background-image: url('x-icon.png'); }
 .facebook { background-image: url('facebook-icon.png'); }
 .linkedin { background-image: url('linkedin-icon.png'); }
+
+
+
+
+/* Стилизация выпадающего списка выбора языка */
+#language-select {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(to top, #3498db, #2980b9);
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    appearance: none; /* Убираем стандартный стрелочный элемент */
+    -webkit-appearance: none; /* Для поддержки вебкит-браузерами */
+    -moz-appearance: none; /* Для поддержки Firefox */
+}
+
+/* Стили при наведении на выпадающий список */
+#language-select:hover {
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+}
+
+/* Стили для опций в выпадающем списке */
+#language-select option {
+    background: #333;
+    color: #fff;
+    font-size: 1em;
+}
+
+/* Стили при наведении на опции в выпадающем списке */
+#language-select option:hover {
+    background: #555;
+}
