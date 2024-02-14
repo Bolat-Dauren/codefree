@@ -1,6 +1,5 @@
 <!-- codefree/views/editor.html -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,40 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Editor</title>
     <link rel="stylesheet" href="/css/style.css">
-
-    <!-- включаем библиотеку редактора кода Ace -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.js"></script>
 </head>
 <body>
-<!-- включаем общую панель навигации -->
 <div id="navbar-container"></div>
-
+<button onclick="goToProfile()">Profile</button>
 <h1>Code Editor</h1>
 <div id="editor" style="height: 400px; width: 80vw;"></div>
-<!-- Добавляем выпадающий список для выбора языка программирования -->
 <select id="language-select" onchange="changeLanguage()">
     <option value="java">Java</option>
     <option value="cpp">C++</option>
     <option value="javascript">JavaScript</option>
-    <!-- Добавьте другие языки программирования по мере необходимости -->
 </select>
 <button onclick="runCode()">Run Code</button>
 <pre id="output"></pre>
 <button onclick="goBack()">Back</button>
 <script src="/js/main.js"></script>
-
-<!-- скрипт для обработки кнопки "назад" -->
 <script>
     function goBack() {
         window.history.back();
     }
-
-
     function changeLanguage() {
-        // Получаем выбранный язык программирования из выпадающего списка
         var selectedLanguage = document.getElementById("language-select").value;
-
-        // Устанавливаем соответствующий режим редактора Ace
         if (selectedLanguage === "java") {
             editor.session.setMode("ace/mode/java");
         } else if (selectedLanguage === "cpp") {
@@ -49,24 +36,14 @@
         } else if (selectedLanguage === "javascript") {
             editor.session.setMode("ace/mode/javascript");
         }
-        // Добавьте другие языки программирования и их соответствующие режимы редактора Ace по мере необходимости
     }
-
-
-
 </script>
-
-<!-- скрипт для инициализации редактора кода Ace -->
 <script>
-    // ожидаем готовности DOM
     document.addEventListener("DOMContentLoaded", function () {
-        // инициализируем редактор Ace
         var editor = ace.edit("editor");
         editor.setTheme("ace/theme/monokai");
         editor.session.setMode("ace/mode/java");
     });
-
-    // общий скрипт панели навигации
     document.getElementById('navbar-container').innerHTML = '<object type="text/html" data="/views/navbar.html"></object>';
 </script>
 </body>
