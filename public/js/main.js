@@ -31,8 +31,8 @@ async function executeJavaCode(code) {
         script: code,
         language: 'java',
         versionIndex: '3',
-        clientId: '8a23b5056b9cd6d66e189ffea9dd5424',  // Use any client ID
-        clientSecret: 'd42e454b81adde23e731e323eea4f0ebda249b71e7df1c6adf1c1cad36037b35'  // Use any client secret
+        clientId: '8a23b5056b9cd6d66e189ffea9dd5424',
+        clientSecret: '44a33e7a62fb37035ed17830da94c4cec9e71578cb64c31e1b6653b4d7e684bb'
     };
 
     var response = await fetch(apiUrl, {
