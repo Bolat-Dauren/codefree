@@ -12,6 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh; /* Ensure full height of the viewport */
+    color: #fff;
 }
 
 
@@ -142,4 +143,35 @@ button:hover, a:hover {
 /* Стили при наведении на опции в выпадающем списке */
 #language-select option:hover {
     background: #555;
+}
+
+
+
+/* Пример стилей для страницы профиля */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.profile-info {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.profile-info p {
+    margin: 0 0 10px;
+}
+
+.profile-info strong {
+    font-weight: bold;
+    margin-right: 5px;
 }

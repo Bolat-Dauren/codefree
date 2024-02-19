@@ -1,10 +1,11 @@
 // codefree/app.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const app = express();
 
-// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/codefree', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
@@ -13,39 +14,51 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
-// Define a user schema
 const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
 });
 
-// Create a User model based on the schema
 const User = mongoose.model('User', userSchema);
+
+app.use(session({
+    secret: '0000',
+    resave: false,
+    saveUninitialized: false
+}));
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.get('/profile', async (req, res) => {
+    try {
+        if (!req.session || !req.session.userId) {
+            return res.redirect('/login');
+        }
+        const userId = req.session.userId;
+        const currentUser = await User.findById(userId);
+        if (!currentUser) {
+            return res.status(404).send('User not found');
+        }
+        res.send(currentUser.toObject());
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
-// Routes
-
-// Registration route
 app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
-
     try {
-        // Check if the user already exists
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.send('Username already exists. Choose a different one.');
         }
-
-        // Create a new user
         const newUser = new User({ username, email, password });
         await newUser.save();
-
-        // Render a success message with a button to redirect to editor.html
         return res.send(`
             <p>Registration successful!</p>
             <a href="/editor"><button>Go to Editor</button></a>
@@ -56,18 +69,14 @@ app.post('/register', async (req, res) => {
     }
 });
 
-// Login route
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-
     try {
-        // Check if the user exists
         const user = await User.findOne({ username, password });
         if (!user) {
             return res.send('Invalid username or password.');
         }
-
-        // Render a success message with a button to redirect to editor.html
+        req.session.userId = user._id;
         return res.send(`
             <p>Login successful!</p>
             <a href="/editor"><button>Go to Editor</button></a>
@@ -77,7 +86,6 @@ app.post('/login', async (req, res) => {
         return res.status(500).send('Internal Server Error');
     }
 });
-
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
@@ -109,4 +117,3 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-// Test coom Nurik hhhjhhj
