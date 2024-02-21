@@ -175,3 +175,9 @@ h1 {
     font-weight: bold;
     margin-right: 5px;
 }
+
+.profile-button {
+    margin-top: 20px; /* добавляем немного отступа сверху */
+    padding: 10px 25px; /* увеличиваем отступы внутри кнопки */
+    font-size: 1.0em; /* увеличиваем размер текста кнопки */
+}
